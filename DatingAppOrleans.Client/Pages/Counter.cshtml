@@ -1,0 +1,43 @@
+﻿@page "/counter"
+@using DatingAppOrleans.Shared.DTOs
+@inject HttpClient Http
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" onclick="@IncrementCount">Click me</button>
+
+<div>
+    <input type="text" placeholder="your name" bind="userName" />
+</div>
+<div>
+    <input type="text" placeholder="password" bind="password" />
+</div>
+<div>
+    <button class="btn btn-primary" onclick="@onRegister">Click me</button>
+</div>
+
+
+@functions {
+    int currentCount = 0;
+    string userName = "";
+    string password = "";
+    string confirmed = "";
+
+    void IncrementCount()
+    {
+        currentCount++;
+    }
+    async Task onRegister()
+    {
+        await Http.SendJsonAsync(HttpMethod.Post, "api/auth/register", new RegisterUserCommand
+        {
+            UserName = userName,
+            Password = password
+        });
+        userName = "";
+        password = "";
+        StateHasChanged();
+    }
+}
