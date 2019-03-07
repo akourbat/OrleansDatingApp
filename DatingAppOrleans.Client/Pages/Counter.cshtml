@@ -23,7 +23,6 @@
     int currentCount = 0;
     string userName = "";
     string password = "";
-    string confirmed = "";
 
     void IncrementCount()
     {
@@ -31,7 +30,7 @@
     }
     async Task onRegister()
     {
-        await Http.SendJsonAsync(HttpMethod.Post, "api/auth/register", new RegisterUserCommand
+        await Http.SendJsonAsync(HttpMethod.Post, "api/auth/login", new LoginUserCommand
         {
             UserName = userName,
             Password = password

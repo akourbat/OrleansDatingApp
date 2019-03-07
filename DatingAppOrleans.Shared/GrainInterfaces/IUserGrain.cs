@@ -12,5 +12,7 @@ namespace DatingAppOrleans.Shared.GrainInterfaces
         Task<List<string>> GetUsers();
 
         Task<UserDto> RegisterAsync(RegisterUserCommand command);
+
+        Task<UserDto> LoginAsync(LoginUserCommand command);
     }
 }

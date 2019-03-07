@@ -48,8 +48,12 @@ namespace DatingAppOrleans.Grains.UserGrain
             _stateMachine.Fire(UserTriggers.Register);
             return result;
         }
-    }
 
+        public async Task<UserDto> LoginAsync(LoginUserCommand command)
+        {
+            return await _mediator.Send(command);
+        }
+    }
 
     public class GetUserState : IRequest<UserState>
     {
