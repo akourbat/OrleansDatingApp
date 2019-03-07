@@ -1,8 +1,6 @@
 ﻿@page "/"
 
-<h1>Just checking</h1>
-
-@*<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Dating App</a>
 
     <ul class="navbar-nav mr-auto">
@@ -16,11 +14,11 @@
             <a class="nav-link" href="#">Messages</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" (click)="logout()">Logout</a>
+            <a class="nav-link">Logout</a>
         </li>
     </ul>
 
-    <div *ngIf="loggedIn()" class="dropdown">
+    <div class="dropdown">
         <a class="dropdown-toggle text-light">
             Welcome User
         </a>
@@ -31,17 +29,17 @@
             <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i>Logout</a>
         </div>
     </div>
-
-    <form *ngIf="!loggedIn()" #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
+    <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="text" name="username"
-               placeholder="Username" required [(ngModel)]="model.username" />
+               placeholder="Username" required />
         <input class="form-control mr-sm-2" type="text" name="password"
-               placeholder="Password" required [(ngModel)]="model.password" />
-        <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+               placeholder="Password" required />
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
     </form>
 </nav>
 
-functions{
+@functions{
 
-}*@
+
+}
 
