@@ -1,3 +1,4 @@
+using DatingAppOrleans.Client.Services;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,6 +8,8 @@ namespace DatingAppOrleans.Client
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<TokenService>();
+            services.AddSingleton<AuthService>();
         }
 
         public void Configure(IComponentsApplicationBuilder app)

@@ -1,6 +1,6 @@
 ﻿@page "/counter"
 @using DatingAppOrleans.Shared.DTOs
-@inject HttpClient Http
+@inject AuthService auth
 
 <h1>Counter</h1>
 
@@ -30,7 +30,7 @@
     }
     async Task onRegister()
     {
-        await Http.SendJsonAsync(HttpMethod.Post, "api/auth/login", new LoginUserCommand
+        await auth.LogInAsync(new LoginUserCommand
         {
             UserName = userName,
             Password = password

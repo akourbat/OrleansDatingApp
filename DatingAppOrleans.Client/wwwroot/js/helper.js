@@ -9,3 +9,7 @@ wasmHelper.saveAccessToken = function (tokenStr) {
 wasmHelper.getAccessToken = function () {
     return localStorage.getItem(wasmHelper.ACCESS_TOKEN_KEY);
 };
+
+wasmHelper.removeAccessToken = function () {
+    return localStorage.removeItem(wasmHelper.ACCESS_TOKEN_KEY);
+};

@@ -1,0 +1,36 @@
+﻿
+@inject AuthService authService
+
+    <div>
+        <h2 class="text-center text-primary">Sign Up</h2>
+
+        <hr />
+        <div class="form-group">
+            <input type="text" class="form-control" bind="model.UserName" placeholder="Username" />
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" bind="model.Password" placeholder="Password" />
+        </div>
+        <div class="form-group text-center">
+            <button class="btn btn-success" onclick="@(async () => await RegisterAsync())">Register</button>
+            <button class="btn btn-default" onclick="@Cancel">Cancel</button>
+        </div>
+    </div>
+
+@functions{
+
+    RegisterUserCommand model { get; set; } = new RegisterUserCommand();
+
+    [Parameter]
+    protected Action<bool> HideRegistrationForm { get; set; }
+
+    void Cancel()
+    {
+        HideRegistrationForm?.Invoke(false);
+    }
+
+    async Task RegisterAsync()
+    {
+        await authService.RegisterAsync(model);
+    }
+}

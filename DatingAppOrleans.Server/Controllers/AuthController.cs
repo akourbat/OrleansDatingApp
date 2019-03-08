@@ -40,6 +40,8 @@ namespace DatingAppOrleans.Server.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginUserCommand command)
         {
+            command.UserName = command.UserName.ToLower();
+
             var grain = _client.GetGrain<IUserGrain>(command.UserName);
 
             var user = await grain.LoginAsync(command);
